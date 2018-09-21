@@ -10,6 +10,7 @@ export class RecipesService {
   recipeSelected = new EventEmitter<Recipe>();
   private recipes: Recipe[] = [
     new Recipe(
+      1,
       'Meal 1',
       'This is a description of meal 1',
       'https://s3.amazonaws.com/finecooking.s3.tauntonclud.com/app/uploads' +
@@ -20,6 +21,7 @@ export class RecipesService {
       ]
     ),
     new Recipe(
+      2,
       'Meal 2',
       'This is a description of meal 2',
       'https://sunbasket.com/resources/img/meal-plans/leanclean.jpg',
@@ -34,6 +36,10 @@ export class RecipesService {
 
   getRecipes() {
     return this.recipes.slice();
+  }
+
+  getRecipe(id: number): Recipe {
+    return this.recipes.find(r => r.id === id);
   }
 
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
