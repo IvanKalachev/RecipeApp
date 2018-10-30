@@ -35,7 +35,7 @@ export class RecipeEditComponent implements OnInit {
       this.recipeForm.value['description'],
       this.recipeForm.value['imagePath'],
       this.recipeForm.value['ingredients']
-      );
+    );
 
     if (this.editMode) {
       this.recipeService.updateRecipe(this.id, newRecipe);
@@ -58,7 +58,7 @@ export class RecipeEditComponent implements OnInit {
   }
 
   onCancel() {
-    this.router.navigate(['../'], {relativeTo: this.route});
+    this.router.navigate(['../'], { relativeTo: this.route });
   }
 
   onDelete(index: number) {
@@ -97,5 +97,9 @@ export class RecipeEditComponent implements OnInit {
       'description': new FormControl(recipeDescription, Validators.required),
       'ingredients': recipeIngredients
     });
+  }
+
+  getControls() {
+    return (<FormArray>this.recipeForm.get('ingredients')).controls;
   }
 }
